@@ -1,0 +1,6 @@
+METODE,BERHASIL,GAGAL,PERSEN_BERHASIL,PERSEN_GAGAL
+Normal Ratio,40,0,100.0,0.0
+IDW,40,0,100.0,0.0
+Random Forest,40,0,100.0,0.0
+Gabungan 3 metode (OR),40,0,100.0,0.0
++ Fallback radius luas,40,0,100.0,0.0

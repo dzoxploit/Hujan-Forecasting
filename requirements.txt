@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+openpyxl
+joblib
+h5py
+pyarrow
+fastapi
+uvicorn[standard]
+python-multipart

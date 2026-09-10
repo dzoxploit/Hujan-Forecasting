@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Imputasi Curah Hujan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Dashboard Imputasi Curah Hujan</h1>
+    <div class="topbar-actions">
+      <span id="statusBadge" class="badge">memuat...</span>
+      <a class="btn-secondary" href="/templates/TEMPLATE_KOSONG_HUJAN.xlsx">Template kosong</a>
+      <a class="btn-secondary" href="/templates/TEMPLATE_CONTOH_TERISI.xlsx">Template contoh terisi</a>
+      <label class="upload-btn">
+        Unggah Excel baru
+        <input id="uploadInput" type="file" accept=".xlsx,.xls" hidden />
+      </label>
+      <button id="downloadBtn" class="btn-secondary" disabled>Unduh hasil (.xlsx)</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="cards" id="statCards"></section>
+
+    <section class="grid-2">
+      <div class="panel">
+        <h2>Peta Pos Curah Hujan (PCH)</h2>
+        <p class="hint">Warna: kelengkapan data asli per stasiun.</p>
+        <div id="map"></div>
+      </div>
+      <div class="panel">
+        <h2>Top 20 PCH - Data Kosong Terbanyak</h2>
+        <div class="chart-wrap"><canvas id="topMissingChart"></canvas></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Perbandingan Metode Imputasi per Stasiun</h2>
+        <div class="controls">
+          <select id="stationSelect"></select>
+          <input id="startDate" type="date" />
+          <span>s.d.</span>
+          <input id="endDate" type="date" />
+        </div>
+      </div>
+      <div class="chart-wrap tall"><canvas id="timeseriesChart"></canvas></div>
+    </section>
+
+    <section class="panel">
+      <h2>Persentase Kegagalan Pengisian per Metode</h2>
+      <div id="failureTable"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Model Random Forest Tersimpan (.h5)</h2>
+      <div id="modelInfo" class="hint">memuat...</div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
